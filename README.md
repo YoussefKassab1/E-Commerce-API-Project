@@ -120,7 +120,7 @@ ECommerceAPI/
 
 | Method | Endpoint             |
 | ------ | -------------------- |
-| GET    | `/api/categories`    |
+| GET    | `/api/Category`    |
 | GET    | `/api/Category/{id}` |
 | POST   | `/api/Category`      |
 | PUT    | `/api/Category/{id}` |
