@@ -2,32 +2,32 @@
 
 A scalable and cleanly structured E-Commerce Backend API built using modern backend practices. This project provides core e-commerce functionalities including product browsing, cart management, and order processing, with secure authentication and authorization.
 
-📌 Features
+# 📌 Features
 🔐 Authentication & Authorization
 JWT Authentication
 Policy-Based Authorization
 Microsoft Identity Integration
 
-🛍️ Product Management
+# 🛍️ Product Management
 Browse products with filtering, search, and pagination
 CRUD operations for products
 
-📂 Category Management
+# 📂 Category Management
 Manage product categories
 Assign images to categories
 
-🛒 Cart Management
+# 🛒 Cart Management
 Add, update, and remove items
 Retrieve user cart
 
-📦 Order Management
+# 📦 Order Management
 Place orders
 View order history and details
 
-🖼️ File Upload
+# 🖼️ File Upload
 Upload images for products and categories
-🏗️ Architecture
 
+# 🏗️ Architecture
 The project follows Clean Architecture principles with:
 
 N-Tier Architecture
@@ -45,7 +45,7 @@ Fluent Validation
 Async/Await for performance
 Dependency Injection
 
-⚙️ Technologies Used
+# ⚙️ Technologies Used
 ASP.NET Core Web API
 Entity Framework Core
 Microsoft Identity
@@ -53,18 +53,18 @@ JWT Authentication
 FluentValidation
 SQL Server (or your DB)
 
-🔐 Authentication Notes
+# 🔐 Authentication Notes
 Users authenticate via JWT tokens.
 UserId is NOT passed in requests.
 User identity is extracted from JWT Claims.
 
-📡 API Endpoints
-🔑 Authentication
+# 📡 API Endpoints
+# 🔑 Authentication
 Method	Endpoint	Description
 POST	/api/Auth/Register
 POST	/api/Auth/Login	
 
-📂 Categories
+# 📂 Categories
 Method	Endpoint
 GET	/api/categories
 GET	/api/Category/{id}
@@ -72,7 +72,7 @@ POST	/api/Category
 PUT	/api/Category/{id}
 DELETE	/api/Category/{id}
 
-🛍️ Products
+# 🛍️ Products
 Method	Endpoint
 GET	/api/Product
 GET	/api/Product/{id}
@@ -80,33 +80,33 @@ POST	/api/Product
 PUT	/api/Product/{id}
 DELETE	/api/Product/{id}
 
-Query Params Example:
+# Query Params Example:
 -categoryId
 -name
 -pageNumber
 -pageSize
 /api/products?categoryId=1&name=phone&pageNumber=1&pageSize=10
 
-🛒 Cart
+# 🛒 Cart
 Method	Endpoint
 POST	/api/Cart
 PUT	/api/Cart
 DELETE	/api/Cart/{productId}
 GET	/api/Cart
 
-📦 Orders
+# 📦 Orders
 Method	Endpoint
 POST	/api/Order
 GET	/api/Order
 GET	/api/Order/{id}
 
-🖼️ File Upload
+# 🖼️ File Upload
 Method	Endpoint
 POST	/api/Image/upload
 POST	/api/Product/{id}/image
 POST	/api/Category/{id}/image
 
-🚀 Getting Started
+# 🚀 Getting Started
 Prerequisites
 .NET SDK
 SQL Server
@@ -125,12 +125,12 @@ dotnet ef database update
 # Run project
 dotnet run
 
-🧪 Testing
+# 🧪 Testing
 API tested using Postman
 A Postman collection can be included for easier testing
 Demo video included in the Readme file
 
-📁 Project Structure
+# 📁 Project Structure
 ECommerceAPI/
 │
 ├── Common                  # Shared Utilities
