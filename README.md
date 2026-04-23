@@ -208,10 +208,10 @@ dotnet run
 ## 🧪 Testing
 
 * Tested using **Postman**
-* You can include a Postman collection for easier usage
-* Demo video available in the repository
+* Demo video available in the Readme file
 
-👉 **Postman Testing Video:** *(Add your link here)*
+👉 **Postman Testing Video:** *(https://drive.google.com/drive/folders/1ht1b-hzmod0l5puay33-JiuvwLoHtsSk?usp=sharing)*
+👉 **Postman API Collection:** *(https://web.postman.co/workspace/My-Workspace~ccafd3ff-f32f-4ff9-888e-5ad4a27ab8e2/collection/39622261-89d93443-2a15-4b56-b23d-ca77de36f184?action=share&source=copy-link&creator=39622261)*
 
 ---
 
