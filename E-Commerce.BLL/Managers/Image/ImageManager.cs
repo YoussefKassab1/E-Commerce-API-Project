@@ -1,0 +1,66 @@
+﻿using E_Commerce.Common;
+using FluentValidation;
+
+namespace E_Commerce.BLL
+{
+    public class ImageManager : IImageManager
+    {
+        private readonly IValidator<ImageUploadDto> _validator;
+
+        public ImageManager(IValidator<ImageUploadDto> validator)
+        {
+            _validator = validator;
+        }
+
+        public async Task<GeneralResult<ImageUploadResultDto>> UploadAsync(
+            ImageUploadDto imageUploadDto,
+            string basePath,
+            string? schema,
+            string? host)
+        {
+
+            // Checking Schema or Host
+            if (string.IsNullOrWhiteSpace(schema) || string.IsNullOrWhiteSpace(host))
+            {
+                return GeneralResult<ImageUploadResultDto>.Failure("Missing Schema or Host");
+            }
+
+            // Validation
+            var result = await _validator.ValidateAsync(imageUploadDto);
+            if (!result.IsValid)
+            {
+                var errors = result.Errors
+                    .GroupBy(r => r.PropertyName)
+                    .ToDictionary(
+                        g => g.Key,
+                        g => g.Select(e => e.ErrorMessage).ToList()
+                    );
+
+                return GeneralResult<ImageUploadResultDto>.Failure(errors);
+            }
+
+            // Saving the file to 
+            var file = imageUploadDto.File;
+            var extension = Path.GetExtension(file.FileName).ToLower();
+            var cleanName = Path.GetFileNameWithoutExtension(file.FileName).Replace(" ", "-").ToLower();
+            var newFileName = $"{cleanName}-{Guid.NewGuid()}{extension}";
+            var directoryPath = Path.Combine(basePath, "Files");
+
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            var fullFilePath = Path.Combine(directoryPath, newFileName);
+            using (var stream = new FileStream(fullFilePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            var url = $"{schema}://{host}/Files/{newFileName}";
+            var imageUploadResultDto = new ImageUploadResultDto(url);
+
+            return GeneralResult<ImageUploadResultDto>.Success(imageUploadResultDto);
+        }
+    }
+}
