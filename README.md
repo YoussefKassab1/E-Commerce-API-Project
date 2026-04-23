@@ -1,144 +1,236 @@
-🛒 E-Commerce API
+# 🛒 E-Commerce API
 
-A scalable and cleanly structured E-Commerce Backend API built using modern backend practices. This project provides core e-commerce functionalities including product browsing, cart management, and order processing, with secure authentication and authorization.
+A scalable, cleanly structured **E-Commerce Backend API** built using modern backend practices and design principles. This project delivers core e-commerce functionality such as product browsing, cart management, and order processing, all secured with robust authentication and authorization.
 
-# 📌 Features
-🔐 Authentication & Authorization
-JWT Authentication
-Policy-Based Authorization
-Microsoft Identity Integration
+---
 
-# 🛍️ Product Management
-Browse products with filtering, search, and pagination
-CRUD operations for products
+## 🚀 Overview
 
-# 📂 Category Management
-Manage product categories
-Assign images to categories
+This API is designed with **Clean Architecture** and **N-Tier Architecture**, ensuring maintainability, scalability, and separation of concerns. It follows industry best practices to provide a solid foundation for real-world e-commerce systems.
 
-# 🛒 Cart Management
-Add, update, and remove items
-Retrieve user cart
+---
 
-# 📦 Order Management
-Place orders
-View order history and details
+## ✨ Key Features
 
-# 🖼️ File Upload
-Upload images for products and categories
+### 🔐 Authentication & Authorization
 
-# 🏗️ Architecture
-The project follows Clean Architecture principles with:
+* JWT-based authentication
+* Policy-based authorization
+* Integration with Microsoft Identity
+* Secure user handling (UserId extracted from JWT claims)
 
-N-Tier Architecture
-Presentation Layer (API)
-Application Layer
-Infrastructure Layer
-Common Layer
-Design Patterns
-Repository Pattern (Generic & Specific)
-Unit of Work Pattern
-Result Pattern (Standard API Response)
-Best Practices
-DTOs for data transfer
-Fluent Validation
-Async/Await for performance
-Dependency Injection
+---
 
-# ⚙️ Technologies Used
-ASP.NET Core Web API
-Entity Framework Core
-Microsoft Identity
-JWT Authentication
-FluentValidation
-SQL Server (or your DB)
+### 🛍️ Product Management
 
-# 🔐 Authentication Notes
-Users authenticate via JWT tokens.
-UserId is NOT passed in requests.
-User identity is extracted from JWT Claims.
+* Browse products with:
 
-# 📡 API Endpoints
-# 🔑 Authentication
-Method	Endpoint	Description
-POST	/api/Auth/Register
-POST	/api/Auth/Login	
+  * Filtering
+  * Search
+  * Pagination
+* Full CRUD operations
 
-# 📂 Categories
-Method	Endpoint
-GET	/api/categories
-GET	/api/Category/{id}
-POST	/api/Category
-PUT	/api/Category/{id}
-DELETE	/api/Category/{id}
+---
 
-# 🛍️ Products
-Method	Endpoint
-GET	/api/Product
-GET	/api/Product/{id}
-POST	/api/Product
-PUT	/api/Product/{id}
-DELETE	/api/Product/{id}
+### 📂 Category Management
 
-# Query Params Example:
--categoryId
--name
--pageNumber
--pageSize
-/api/products?categoryId=1&name=phone&pageNumber=1&pageSize=10
+* Create, update, and delete categories
+* Assign images to categories
 
-# 🛒 Cart
-Method	Endpoint
-POST	/api/Cart
-PUT	/api/Cart
-DELETE	/api/Cart/{productId}
-GET	/api/Cart
+---
 
-# 📦 Orders
-Method	Endpoint
-POST	/api/Order
-GET	/api/Order
-GET	/api/Order/{id}
+### 🛒 Cart Management
 
-# 🖼️ File Upload
-Method	Endpoint
-POST	/api/Image/upload
-POST	/api/Product/{id}/image
-POST	/api/Category/{id}/image
+* Add items to cart
+* Update quantities
+* Remove items
+* Retrieve current user cart
 
-# 🚀 Getting Started
-Prerequisites
-.NET SDK
-SQL Server
-Visual Studio / VS Code
-Setup Steps
+---
 
-# Clone repo
-git clone https://github.com/YoussefKassab1/E-Commerce-API-Project.git
+### 📦 Order Management
 
-# Navigate to project
-cd ecommerce-api
+* Place orders
+* View order history
+* Retrieve order details
 
-# Apply migrations
-dotnet ef database update
+---
 
-# Run project
-dotnet run
+### 🖼️ File Upload
 
-# 🧪 Testing
-API tested using Postman
-A Postman collection can be included for easier testing
-Demo video included in the Readme file
+* Upload images for:
 
-# 📁 Project Structure
+  * Products
+  * Categories
+
+---
+
+## 🏗️ Architecture
+
+This project follows **Clean Architecture** principles:
+
+```
 ECommerceAPI/
 │
-├── Common                  # Shared Utilities
-├── APIs Layer              # Controllers & Endpoints
-├── Business Logic Layer    # DTOs & Services & Validations
+├── Common Layer            # Shared utilities
+├── API Layer               # Controllers & Endpoints
+├── Buisness Logic Layer    # DTOs & Services & Validations
 ├── Data Access Layer       # Entities & Core Models & Repos
+```
 
-👉 Postman Testing Video: (Add your video link here)
+### 🧩 Design Patterns Used
 
-👨‍💻 Author
-Youssef Kassab
+* Repository Pattern (Generic & Specific)
+* Unit of Work Pattern
+* Result Pattern (Standardized API responses)
+
+---
+
+## ⚙️ Technologies
+
+* ASP.NET Core Web API
+* Entity Framework Core
+* Microsoft Identity
+* JWT Authentication
+* FluentValidation
+* SQL Server (or any compatible DB)
+
+---
+
+## 🔑 Authentication Notes
+
+* Users authenticate using **JWT tokens**
+* No need to pass `UserId` in requests
+* User identity is automatically extracted from JWT claims
+
+---
+
+## 📡 API Endpoints
+
+### 🔐 Authentication
+
+| Method | Endpoint             | Description       |
+| ------ | -------------------- | ----------------- |
+| POST   | `/api/Auth/Register` | Register new user |
+| POST   | `/api/Auth/Login`    | Login user        |
+
+---
+
+### 📂 Categories
+
+| Method | Endpoint             |
+| ------ | -------------------- |
+| GET    | `/api/categories`    |
+| GET    | `/api/Category/{id}` |
+| POST   | `/api/Category`      |
+| PUT    | `/api/Category/{id}` |
+| DELETE | `/api/Category/{id}` |
+
+---
+
+### 🛍️ Products
+
+| Method | Endpoint            |
+| ------ | ------------------- |
+| GET    | `/api/Product`      |
+| GET    | `/api/Product/{id}` |
+| POST   | `/api/Product`      |
+| PUT    | `/api/Product/{id}` |
+| DELETE | `/api/Product/{id}` |
+
+#### 🔎 Query Parameters Example:
+
+```
+/api/products?categoryId=1&name=phone&pageNumber=1&pageSize=10
+```
+
+---
+
+### 🛒 Cart
+
+| Method | Endpoint                |
+| ------ | ----------------------- |
+| POST   | `/api/Cart`             |
+| PUT    | `/api/Cart`             |
+| DELETE | `/api/Cart/{productId}` |
+| GET    | `/api/Cart`             |
+
+---
+
+### 📦 Orders
+
+| Method | Endpoint          |
+| ------ | ----------------- |
+| POST   | `/api/Order`      |
+| GET    | `/api/Order`      |
+| GET    | `/api/Order/{id}` |
+
+---
+
+### 🖼️ File Upload
+
+| Method | Endpoint                   |
+| ------ | -------------------------- |
+| POST   | `/api/Image/upload`        |
+| POST   | `/api/Product/{id}/image`  |
+| POST   | `/api/Category/{id}/image` |
+
+---
+
+## 🚀 Getting Started
+
+### ✅ Prerequisites
+
+* .NET SDK
+* SQL Server
+* Visual Studio or VS Code
+
+---
+
+### ⚙️ Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/YoussefKassab1/E-Commerce-API-Project.git
+
+# Navigate to project folder
+cd ecommerce-api
+
+# Apply database migrations
+dotnet ef database update
+
+# Run the application
+dotnet run
+```
+
+---
+
+## 🧪 Testing
+
+* Tested using **Postman**
+* You can include a Postman collection for easier usage
+* Demo video available in the repository
+
+👉 **Postman Testing Video:** *(Add your link here)*
+
+---
+
+## 📌 Best Practices Applied
+
+* DTOs for clean data transfer
+* FluentValidation for input validation
+* Async/Await for better performance
+* Dependency Injection for loose coupling
+* Clean separation of concerns
+
+---
+
+## 👨‍💻 Author
+
+**Youssef Kassab**
+
+---
+
+## ⭐ Final Notes
+
+This project is a strong foundation for building scalable e-commerce systems and demonstrates real-world backend architecture and practices. Feel free to extend it with features like payments, reviews, or admin dashboards.
